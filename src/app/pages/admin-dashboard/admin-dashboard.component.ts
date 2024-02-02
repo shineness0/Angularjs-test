@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserProfile } from '../../models/user';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -8,5 +9,22 @@ import { Component } from '@angular/core';
   styleUrl: './admin-dashboard.component.css'
 })
 export class AdminDashboardComponent {
+
+  firstName = ''
+  lastName = ''
+  email = ''
+  phone = ''
+  gender = ''
+  address = ''
+
+
+
+  users: UserProfile[] = []
+
+  ngOnInit() {
+    if(localStorage['users']) {
+      this.users = JSON.parse(localStorage['users'])
+    }
+  }
 
 }

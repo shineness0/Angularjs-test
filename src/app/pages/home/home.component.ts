@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserProfile } from '../../models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,8 @@ import { UserProfile } from '../../models/user';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  constructor(private router:Router){}
+
   firstName = ''
   lastName = ''
   email = ''
@@ -32,7 +35,6 @@ export class HomeComponent {
     const matricNo = Math.round( Math.random() * 50000)
     
     const user = {
-      id: this.users.length + 1,
       matricNo,
       firstName: this.firstName,
       lastName: this.lastName,
@@ -47,5 +49,7 @@ export class HomeComponent {
     this.users = [...this.users, user]
 
     localStorage.setItem('users', JSON.stringify(this.users))
+
+    this.router.navigate(['/'])
   }
 }

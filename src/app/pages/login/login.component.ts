@@ -22,15 +22,21 @@ export class LoginComponent {
 
   email = ''
   password = ''
+  isAdmin = true
 
 onSubmit() {
   const userExists = localStorage['users'] ? JSON.parse(localStorage['users']).find((student:UserProfile) => (student.password === this.password && student.email == this.email)) : false
 
+
+
   if(userExists){
     this.showAlert('Login successful', 'success')
+    if(userExists.userType === 'admin'){
+      localStorage.setItem('isAdmin',JSON.stringify(this.isAdmin))
+    }
     setTimeout(() => {
       userExists.userType === 'student' ? (
-      this.router.navigate(['/dashboard'])
+      this.router.navigate([`/dashboard/${userExists.matricNo}`])
       ) : (
       this.router.navigate(['/admin-dashboard'])
       )

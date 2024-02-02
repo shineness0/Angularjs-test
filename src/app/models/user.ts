@@ -1,5 +1,4 @@
 export interface UserProfile {
-  id: number,
   matricNo: number,
   firstName: string,
   lastName: string,
