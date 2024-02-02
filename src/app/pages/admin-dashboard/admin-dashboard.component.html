@@ -38,14 +38,14 @@
                   Actions
                 </button>
                 <ul class="dropdown-menu">
-                  <!-- <li>
-                    <a
-                      routerLink="profile/{{ user.id }}"
-                      class="dropdown-item"
-                      href="#"
-                      >View profile</a
+                  <li>
+                    <button
+                      (click)="onDelete(user.matricNo)"
+                      class="btn btn-danger"
                     >
-                  </li> -->
+                      Delete
+                    </button>
+                  </li>
                 </ul>
               </div>
             </td>
